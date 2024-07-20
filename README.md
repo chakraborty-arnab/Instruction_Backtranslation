@@ -36,7 +36,7 @@ Notebook:
 * Based on the experiments and results in the paper, this fine-tuned model outperforms the base LLaMA-2 chat model.
 
 ## Combine Workflow:
-For users who prefer to run the entire process in a single notebook, a comprehensive notebook has been created that combines all the steps:
+For users who prefer to run the entire process in a single notebook, a comprehensive notebook has been created that combines all the steps: [End_to_End_Implementation](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Instruction_Backtranslation.ipynb)
 
 
 ## Hardware Requirements
