@@ -11,7 +11,7 @@ The authors of the paper present a scalable method to build a high quality instr
 
 ## Solution Overview
 
-![Instruction Backtranslation Process](assets/images/overview.png)
+![Instruction Backtranslation Process](assets/overview.png)
 
 ## Implementation
 
