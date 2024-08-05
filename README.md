@@ -1,9 +1,17 @@
 # Self-Alignment with Instruction_Backtranslation
 
-Implementation of the paper [Self-Alignment with Instruction Backtranslation](https://arxiv.org/abs/2308.06259)
+Implementation of [Self-Alignment with Instruction Backtranslation](https://arxiv.org/abs/2308.06259)
 
-## Abstract
-We present a scalable method to build a high quality instruction following language model by automatically labelling human-written text with corresponding instructions. Our approach, named instruction backtranslation, starts with a language model finetuned on a small amount of seed data, and a given web corpus. The seed model is used to construct training examples by generating instruction prompts for web documents (self-augmentation), and then selecting high quality examples from among these candidates (self-curation). This data is then used to finetune a stronger model. Finetuning LLaMa on two iterations of our approach yields a model that outperforms all other LLaMa-based models on the Alpaca leaderboard not relying on distillation data, demonstrating highly effective self-alignment.
+## Introduction
+
+While fine-tuning small language models like LLaMA-2 and Mistral-7B is well-established, real-world scenarios often lack annotated data. Moreover, human annotation can be prohibitively expensive. This project explores an innovative approach to overcome these challenges.
+
+## Methodology
+The authors of the paper present a scalable method to build a high quality instruction following language model by automatically labelling human-written text with corresponding instructions. The approach, named instruction backtranslation, starts with a language model finetuned on a small amount of seed data, and a given web corpus. The seed model is used to construct training examples by generating instruction prompts for web documents (self-augmentation), and then selecting high quality examples from among these candidates (self-curation). This data is then used to finetune a stronger model. Finetuning LLaMa on two iterations of our approach yields a model that outperforms all other LLaMa-based models on the Alpaca leaderboard not relying on distillation data, demonstrating highly effective self-alignment.
+
+## Solution Overview
+
+![Instruction Backtranslation Process](assets/images/overview.png)
 
 ## Implementation
 
