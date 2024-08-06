@@ -17,39 +17,34 @@ The authors of the paper present a scalable method to build a high quality instr
 
 ### 1. Instruction Backtranslation:
 a. Dataset Generation:
-
-Notebook: [Generate_Backtranslation_dataset](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Notebooks/Generate_backtranslation_dataset.ipynb)
+* Notebook: [Generate_Backtranslation_dataset](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Notebooks/Generate_backtranslation_dataset.ipynb)
 * Create a Backtranslation dataset with (Response, Instruction) pairs that we will use to fine-tune our Instruction Backtranslation model.
 * Perform pre-processing and filtering on the [openassistant-guanaco](https://huggingface.co/datasets/timdettmers/openassistant-guanaco) dataset to generate the guanaco-llama2-reverse-instruct dataset in the format compatible with the base [Llama-2-7b-chat-hf](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) model.
 * The resulting dataset is uploaded as [guanaco-llama2-reverse-instruct](https://huggingface.co/datasets/Arnab13/guanaco-llama2-reverse-instruct).
 
 b. Model Fine-tuning:
-
-Notebook: [Instruction_Backtranslation](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Notebooks/Instruction_Backtranslation.ipynb)
+* Notebook: [Instruction_Backtranslation](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Notebooks/Instruction_Backtranslation.ipynb)
 * Fine-tune the [Llama-2-7b-chat-hf](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) model using QLoRA on the [guanaco-llama2-reverse-instruct](https://huggingface.co/datasets/Arnab13/guanaco-llama2-reverse-instruct) dataset.
 * The resulting model is uploaded as [Llama2-7b-BackInstruct](https://huggingface.co/Arnab13/Llama2-7b-BackInstruct).
 
 ### 2. Self-Augmentation
-
-Notebook: [Self_Augmentation](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Notebooks/Self_Augmentation.ipynb)
+* Notebook: [Self_Augmentation](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Notebooks/Self_Augmentation.ipynb)
 * Randomly sample a subset of 150 completions from the [LIMA](https://huggingface.co/datasets/GAIR/lima) dataset, filtering out any multi-turn examples.
 * Use the [Llama2-7b-BackInstruct](https://huggingface.co/Arnab13/Llama2-7b-BackInstruct) model to generate instructions for the LIMA dataset, mimicking real-world scenarios of generating instructions for a large text corpus.
 
 ### 3. Self-Curation
-
-Notebook: [Self_Curation](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Notebooks/Self_Curation.ipynb)
+* Notebook: [Self_Curation](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Notebooks/Self_Curation.ipynb)
 * Use the base [Llama-2-7b-chat-hf](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) model to rate the generated instruction-completion pairs from the [LIMA](https://huggingface.co/datasets/GAIR/lima) dataset.
 * Low-quality results are filtered out to ensure a high-quality dataset.
 * The resulting dataset is uploaded as [guanaco-llama2-reverse-instruct](https://huggingface.co/datasets/Arnab13/LIMA-Generated-Instruct-self-curated).
 
 ### 4. Self-Alignment
-
-Notebook: [Self_Alignment](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Notebooks/Self_Alignment.ipynb)
+* Notebook: [Self_Alignment](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Notebooks/Self_Alignment.ipynb)
 * We fine-tune a base [Llama-2-7b-chat-hf](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) chat model using QLoRA on the [guanaco-llama2-reverse-instruct](https://huggingface.co/datasets/Arnab13/LIMA-Generated-Instruct-self-curated) dataset.
 * Based on the experiments and results in the paper, this fine-tuned model outperforms the base LLaMA-2 chat model.
 
 ## Combine Workflow:
-For users who prefer to run the entire process in a single notebook, a comprehensive notebook has been created that combines all the steps: [End_to_End_Implementation](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/assets/Instruction_Backtranslation.ipynb)
+For users who prefer to run the entire process in a single notebook, a comprehensive notebook has been created that combines all the steps: [End_to_End_Implementation](https://github.com/chakraborty-arnab/Instruction_Backtranslation/blob/main/Notebooks/End_to_End_Implemetation.ipynb)
 
 
 ## Hardware Requirements
